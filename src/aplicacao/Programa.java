@@ -26,8 +26,17 @@ public class Programa {
 		System.out.println();
 		System.out.print("Informe o valor do saque");
 		double quantia = sc.nextDouble();
+		
+		if(quantia > acc.getLimiteSaque()) {
+			System.out.println("Erro: A quantia excede o limite de saque");
+		}
+		else if(quantia > acc.getSaldo()) {
+			System.out.println("Saldo insuficiente");
+		}
+		else {
 		acc.saque(quantia);
 		System.out.printf("Novo Saldo: %.2f%n", acc.getSaldo());
+		}
 		sc.close();
 		
 
