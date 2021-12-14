@@ -56,5 +56,14 @@ public class Conta {
 	public void saque(double quantia) {
 		saldo= saldo - quantia;
 	}
+	public String validarSaque(double quantia) {
+		if(quantia > getLimiteSaque()) {
+			return "Erro: A quantia excede o limite de saque";
+		}
+	   if(quantia > getSaldo()) {
+			return "Saldo insuficiente";
+		}
+	   return null;
+	}
 	
 }
