@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entidades.Conta;
+import exceptions.BusinessException;
 
 public class Programa {
 
@@ -27,13 +28,14 @@ public class Programa {
 		System.out.print("Informe o valor do saque");
 		double quantia = sc.nextDouble();
 		
-		String erro = acc.validarSaque(quantia);
-		if (erro != null) {
-			System.out.println(erro);
-		}
-		else {
+		
+		
+		try {
 		acc.saque(quantia);
 		System.out.printf("Novo Saldo: %.2f%n", acc.getSaldo());
+		}
+		catch(BusinessException e) {
+			System.out.println(e.getMessage());
 		}
 		sc.close();
 	
